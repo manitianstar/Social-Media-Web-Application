@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import SignUp from './SignUp';
-
+import Login from './Login';
 const Header = () => {
   const [showSignUp, setShowSignUp] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   const handleSignUpClick = () => {
-    setShowSignUp(true);
+    setShowSignUp(prevState => !prevState);
+  };
+  const handleLoginClick = () => {
+    setShowLogin(prevState => !prevState);
   };
 
   return (
@@ -29,12 +33,13 @@ const Header = () => {
               <input type="search" className="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" />
             </form>
             <div className="text-end">
-              <button type="button" className="btn btn-outline-light me-2">Login</button>
+              <button type="button" className="btn btn-outline-light me-2" onClick={handleLoginClick}>Login</button>
               <button type="button" className="btn btn-warning" onClick={handleSignUpClick}>Sign-up</button>
             </div>
           </div>
         </div>
       </header>
+      {showLogin && <Login/>}
       {showSignUp && <SignUp />}
     </>
   );
