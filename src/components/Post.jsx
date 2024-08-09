@@ -3,6 +3,7 @@ import { MdDelete } from "react-icons/md";
 import { PostList } from "../store/post-list-store";
 const Post=({post })=>{
 const {deletePost}=useContext(PostList);
+// const  [count ,  setCount  ] =  useState(0) ;   
 
 return <div class="card post-card" style={{width: "18rem"}}>
 <div class="card-body">
@@ -11,11 +12,15 @@ return <div class="card post-card" style={{width: "18rem"}}>
   </h5>
   <p class="card-text">{post.body}</p>
   
-  {post.tags.map((tag)=>(
+  {post.tags.map((tag)=>{
+    // setCount(count +1)
+    (
      <span key={tag} class="badge text-bg-primary hashtag">{tag}</span>
-  ))}
+      
+  )
+  })} 
   <div class="alert alert-success reactions" role="alert">
-This post has been reacted by {post.reactions} people
+This post has been reacted by {post.reactions.likes} people
 </div>
 </div>
 </div>
